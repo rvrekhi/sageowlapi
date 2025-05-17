@@ -160,6 +160,74 @@ http://localhost:9393/api/calculate?latitude=28.6139&longitude=77.209&year=2023&
 
 - You should specify timezone, for example if you are living in Iran you can put that on +03:30.
 
+
+## Timezones:
+Please consider time_zone should pad with zero with two digit length and have sign: 
+
+Correct: "+01:00", "-01:00"
+
+Incorrect: ~~1:00~~, ~~+1:00~~, ~~1:0~~, ~~-1:0~~, ~~1~~, ~~+1~~, ~~-1~~
+
+
+| Timezone | City                     | Country        |
+| -------- | ------------------------ | ------------- |
+| -03:00   | Rio de Janeiro           | Brazil         |
+| -05:00   | New York (EST)          | USA           |
+| -04:00   | New York (EDT)          | USA           |
+| +00:00   | London (GMT)             | UK            |
+| +01:00   | London (BST)             | UK            |
+| +09:00   | Tokyo                    | Japan          |
+| +10:00   | Sydney (AEST)           | Australia      |
+| +11:00   | Sydney (AEDT)           | Australia      |
+| +04:00   | Dubai                    | UAE           |
+| +03:00   | Moscow                   | Russia        |
+| +08:00   | Beijing                  | China         |
+| +05:30   | Delhi                    | India         |
+| +01:00   | Paris (CET)              | France        |
+| +02:00   | Paris (CEST)             | France        |
+| -08:00   | Los Angeles (PST)       | USA           |
+| -07:00   | Los Angeles (PDT)       | USA           |
+| -06:00   | Chicago (CST)           | USA           |
+| -05:00   | Chicago (CDT)           | USA           |
+| +02:00   | Johannesburg             | South Africa  |
+| +02:00   | Cairo                    | Egypt         |
+| +03:00   | Istanbul                 | Turkey        |
+| +08:00   | Singapore                | Singapore     |
+| +07:00   | Bangkok                  | Thailand      |
+| +09:00   | Seoul                    | South Korea   |
+| +07:00   | Jakarta (WIB)            | Indonesia     |
+| +08:00   | Jakarta (WITA)           | Indonesia     |
+| +09:00   | Jakarta (WIT)            | Indonesia     |
+| +08:00   | Manila                   | Philippines   |
+| +01:00   | Berlin (CET)             | Germany       |
+| +02:00   | Berlin (CEST)            | Germany       |
+| +02:00   | Helsinki (EEST)          | Finland       |
+| +03:00   | Helsinki (EET)           | Finland       |
+| +02:00   | Tel Aviv (IDT)          | Israel        |
+| +03:00   | Tel Aviv (IST)          | Israel        |
+| +03:00   | Riyadh                   | Saudi Arabia  |
+| +03:00   | Doha                     | Qatar         |
+| +03:00   | Abu Dhabi                | UAE           |
+| +03:30   | Tehran                   | Iran          |
+| -03:00   | Buenos Aires             | Argentina      |
+| -05:00   | Toronto                  | Canada        |
+| +01:00   | Rome                     | Italy         |
+| +02:00   | Athens                   | Greece        |
+| +01:00   | Madrid                   | Spain         |
+| +00:00   | Lisbon                   | Portugal      |
+| +01:00   | Amsterdam                | Netherlands    |
+| +01:00   | Brussels                 | Belgium       |
+| +01:00   | Vienna                   | Austria       |
+| +01:00   | Zurich                   | Switzerland   |
+| +08:00   | Hong Kong                | Hong Kong     |
+| +08:00   | Kuala Lumpur             | Malaysia      |
+| +12:00   | Auckland                 | New Zealand   |
+| -06:00   | Mexico City              | Mexico        |
+| -03:00   | Santiago                 | Chile         |
+| +05:00   | Karachi                  | Pakistan      |
+
+
+
 **Response**:
 ```json
 
@@ -464,68 +532,6 @@ In case of errors, the API returns a JSON response with an error message and app
     "message":"No route found for GET http://localhost:9393/api/not_registered_route/"
 }
 ```
-
-## Timezones:
-
-## Timezones:
-
-| Timezone | City                     | Country        |
-| -------- | ------------------------ | ------------- |
-| -03:00   | Rio de Janeiro           | Brazil         |
-| -05:00   | New York (EST)          | USA           |
-| -04:00   | New York (EDT)          | USA           |
-| +00:00   | London (GMT)             | UK            |
-| +01:00   | London (BST)             | UK            |
-| +09:00   | Tokyo                    | Japan          |
-| +10:00   | Sydney (AEST)           | Australia      |
-| +11:00   | Sydney (AEDT)           | Australia      |
-| +04:00   | Dubai                    | UAE           |
-| +03:00   | Moscow                   | Russia        |
-| +08:00   | Beijing                  | China         |
-| +05:30   | Delhi                    | India         |
-| +01:00   | Paris (CET)              | France        |
-| +02:00   | Paris (CEST)             | France        |
-| -08:00   | Los Angeles (PST)       | USA           |
-| -07:00   | Los Angeles (PDT)       | USA           |
-| -06:00   | Chicago (CST)           | USA           |
-| -05:00   | Chicago (CDT)           | USA           |
-| +02:00   | Johannesburg             | South Africa  |
-| +02:00   | Cairo                    | Egypt         |
-| +03:00   | Istanbul                 | Turkey        |
-| +08:00   | Singapore                | Singapore     |
-| +07:00   | Bangkok                  | Thailand      |
-| +09:00   | Seoul                    | South Korea   |
-| +07:00   | Jakarta (WIB)            | Indonesia     |
-| +08:00   | Jakarta (WITA)           | Indonesia     |
-| +09:00   | Jakarta (WIT)            | Indonesia     |
-| +08:00   | Manila                   | Philippines   |
-| +01:00   | Berlin (CET)             | Germany       |
-| +02:00   | Berlin (CEST)            | Germany       |
-| +02:00   | Helsinki (EEST)          | Finland       |
-| +03:00   | Helsinki (EET)           | Finland       |
-| +02:00   | Tel Aviv (IDT)          | Israel        |
-| +03:00   | Tel Aviv (IST)          | Israel        |
-| +03:00   | Riyadh                   | Saudi Arabia  |
-| +03:00   | Doha                     | Qatar         |
-| +03:00   | Abu Dhabi                | UAE           |
-| +03:30   | Tehran                   | Iran          |
-| -03:00   | Buenos Aires             | Argentina      |
-| -05:00   | Toronto                  | Canada        |
-| +01:00   | Rome                     | Italy         |
-| +02:00   | Athens                   | Greece        |
-| +01:00   | Madrid                   | Spain         |
-| +00:00   | Lisbon                   | Portugal      |
-| +01:00   | Amsterdam                | Netherlands    |
-| +01:00   | Brussels                 | Belgium       |
-| +01:00   | Vienna                   | Austria       |
-| +01:00   | Zurich                   | Switzerland   |
-| +08:00   | Hong Kong                | Hong Kong     |
-| +08:00   | Kuala Lumpur             | Malaysia      |
-| +12:00   | Auckland                 | New Zealand   |
-| -06:00   | Mexico City              | Mexico        |
-| -03:00   | Santiago                 | Chile         |
-| +05:00   | Karachi                  | Pakistan      |
-
 
 
 ## Support
