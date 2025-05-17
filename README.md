@@ -45,7 +45,7 @@ A REST API for Jyotish (Vedic Astrology) calculations, built on top of the [kunj
 
 ### Additional Features
 
-- **Automatic Timezone Detection**: Adjusts calculations based on the provided location.
+- ~~**Automatic Timezone Detection**: Adjusts calculations based on the provided location.~~ [DISABLED]
 - **DST Handling**: Accounts for Daylight Saving Time shifts.
 - **Ayanamsha Calculations**: Adjustments for the precession of the equinoxes.
 - **Dasha Calculations (Vimshottari)**: Planetary periods analysis.
@@ -136,7 +136,7 @@ Calculates chart based on provided parameters.
 **Request**
 
 ```bash
-http://localhost:9393/api/calculate?latitude=37.28077&longitude=49.583057&year=2023&month=12&day=25&hour=12&min=0&sec=0&time_zone=Asia/Tehran&dst_hour=0&dst_min=0&nesting=0&varga=D1,D9&infolevel=basic,panchanga,transit
+http://localhost:9393/api/calculate?latitude=28.6139&longitude=77.209&year=2023&month=12&day=25&hour=12&min=0&sec=0&time_zone=%2B03%3A30&dst_hour=0&dst_min=0&nesting=0&varga=D1%2CD9&infolevel=basic%2Cpanchanga%2Ctransit
 ```
 
 **Query Parameters**:
@@ -151,12 +151,14 @@ http://localhost:9393/api/calculate?latitude=37.28077&longitude=49.583057&year=2
 | hour       | integer | Yes      | Hour for calculation (0-23)           | 12         |
 | min        | integer | Yes      | Minute for calculation (0-59)         | 0          |
 | sec        | integer | Yes      | Second for calculation (0-59)         | 0          |
-| time_zone  | string  | No       | Timezone for calculation             | Asia/Tehran |
+| time_zone  | string  | No       | Timezone for calculation,             | +03:30 |
 | dst_hour   | integer | No       | DST hours offset                      | 0          |
 | dst_min    | integer | No       | DST minutes offset                    | 0          |
 | nesting    | integer | No       | Nesting level for calculations        | 0          |
 | varga      | string  | No       | Varga divisions (comma-separated)     | D1,D9      |
 | infolevel  | string  | No       | Info levels to include               | basic,ashtakavarga,grahabala,rashibala,yogas,panchanga,transit |
+
+- You should specify timezone, for example if you are living in Iran you can put that on +03:30.
 
 **Response**:
 ```json
@@ -463,6 +465,68 @@ In case of errors, the API returns a JSON response with an error message and app
 }
 ```
 
+## Timezones:
+
+## Timezones:
+
+| Timezone | City                     | Country        |
+| -------- | ------------------------ | ------------- |
+| -03:00   | Rio de Janeiro           | Brazil         |
+| -05:00   | New York (EST)          | USA           |
+| -04:00   | New York (EDT)          | USA           |
+| +00:00   | London (GMT)             | UK            |
+| +01:00   | London (BST)             | UK            |
+| +09:00   | Tokyo                    | Japan          |
+| +10:00   | Sydney (AEST)           | Australia      |
+| +11:00   | Sydney (AEDT)           | Australia      |
+| +04:00   | Dubai                    | UAE           |
+| +03:00   | Moscow                   | Russia        |
+| +08:00   | Beijing                  | China         |
+| +05:30   | Delhi                    | India         |
+| +01:00   | Paris (CET)              | France        |
+| +02:00   | Paris (CEST)             | France        |
+| -08:00   | Los Angeles (PST)       | USA           |
+| -07:00   | Los Angeles (PDT)       | USA           |
+| -06:00   | Chicago (CST)           | USA           |
+| -05:00   | Chicago (CDT)           | USA           |
+| +02:00   | Johannesburg             | South Africa  |
+| +02:00   | Cairo                    | Egypt         |
+| +03:00   | Istanbul                 | Turkey        |
+| +08:00   | Singapore                | Singapore     |
+| +07:00   | Bangkok                  | Thailand      |
+| +09:00   | Seoul                    | South Korea   |
+| +07:00   | Jakarta (WIB)            | Indonesia     |
+| +08:00   | Jakarta (WITA)           | Indonesia     |
+| +09:00   | Jakarta (WIT)            | Indonesia     |
+| +08:00   | Manila                   | Philippines   |
+| +01:00   | Berlin (CET)             | Germany       |
+| +02:00   | Berlin (CEST)            | Germany       |
+| +02:00   | Helsinki (EEST)          | Finland       |
+| +03:00   | Helsinki (EET)           | Finland       |
+| +02:00   | Tel Aviv (IDT)          | Israel        |
+| +03:00   | Tel Aviv (IST)          | Israel        |
+| +03:00   | Riyadh                   | Saudi Arabia  |
+| +03:00   | Doha                     | Qatar         |
+| +03:00   | Abu Dhabi                | UAE           |
+| +03:30   | Tehran                   | Iran          |
+| -03:00   | Buenos Aires             | Argentina      |
+| -05:00   | Toronto                  | Canada        |
+| +01:00   | Rome                     | Italy         |
+| +02:00   | Athens                   | Greece        |
+| +01:00   | Madrid                   | Spain         |
+| +00:00   | Lisbon                   | Portugal      |
+| +01:00   | Amsterdam                | Netherlands    |
+| +01:00   | Brussels                 | Belgium       |
+| +01:00   | Vienna                   | Austria       |
+| +01:00   | Zurich                   | Switzerland   |
+| +08:00   | Hong Kong                | Hong Kong     |
+| +08:00   | Kuala Lumpur             | Malaysia      |
+| +12:00   | Auckland                 | New Zealand   |
+| -06:00   | Mexico City              | Mexico        |
+| -03:00   | Santiago                 | Chile         |
+| +05:00   | Karachi                  | Pakistan      |
+
+
 
 ## Support
 
@@ -476,4 +540,4 @@ The Jyotish library used in this project is licensed under the GNU General Publi
 
 ## Contact
 
-For any inquiries, questions, or support, please contact [on Telegram](http://t.me/samanesmaeil).
+For any inquiries, questions, or support, please contact [on Telegram](http://t.me/teal33t).

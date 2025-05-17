@@ -83,17 +83,16 @@ class Lib
         );
     }
 
-    public function calculateNow($latitude = '35.708309', $longitude = '51.380730')
+    public function calculateNow($latitude = '35.708309', $longitude = '51.380730', $time_zone="+03:30")
     {
-        $tz = $this->getNearestTimezone($latitude, $longitude);
-        $now = new DateTime('now', new DateTimeZone($tz[0]));
+        // $tz = $this->getNearestTimezone($latitude, $longitude);
+        $now = new DateTime('now', new DateTimeZone($time_zone));
         $year = $now->format('Y');
         $month = $now->format('m');
         $day = $now->format('d');
         $hour = $now->format('H');
         $min = $now->format('i');
         $sec = $now->format('s');
-        $time_zone = $tz[1];
         $dst_hour = 0;
         $dst_min = 0;
         $nesting = 2;
@@ -219,7 +218,7 @@ class Lib
         $hour,
         $min,
         $sec,
-        $time_zone = 'Asia/Tehran',
+        $time_zone = '+03:30',
         $dst_hour = 0,
         $dst_min = 0,
         $vargas = [
@@ -250,9 +249,12 @@ class Lib
             'altitude' => 0
         ]);
 
-        $tz = $this->getNearestTimezone($latitude, $longitude);
+        # TODO: getNearestTimezone disabled, should rewrite with an accurate method in future
+        # From now user should add $timezone from -12:00 to +12:00
+        // $tz = $this->getNearestTimezone($latitude, $longitude);
+
         # format datetime for DateTime Object
-        $datetime = sprintf("%s-%s-%s %s:%s:%s%s", $year, $month, $day, $hour, $min, $sec, $tz[1]);
+        $datetime = sprintf("%s-%s-%s %s:%s:%s%s", $year, $month, $day, $hour, $min, $sec, $time_zone);
         $date = new DateTime($datetime);
 
         # perform DST offest
