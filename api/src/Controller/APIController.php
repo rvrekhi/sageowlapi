@@ -274,6 +274,13 @@ class APIController extends AbstractController
      *     required=false,
      *     @OA\Schema(type="number", format="float", example=51.380730)
      * )
+     * @OA\Parameter(
+     *     name="time_zone",
+     *     in="query",
+     *     description="Timezone for the calculation",
+     *     required=true,
+     *     @OA\Schema(type="string", example="+03:30")
+     * )
      * @OA\Response(
      *     response=200,
      *     description="Successful chart calculation",
@@ -304,6 +311,7 @@ class APIController extends AbstractController
 
             $latitude = $request->query->get('latitude') ?? $defaultLatitude;
             $longitude = $request->query->get('longitude') ?? $defaultLongitude;
+            $time_zone = $request->query->get('time_zone') ?? "+03:30";
             
             if (!is_numeric($latitude) || !is_numeric($longitude)) {
                 throw new ApiException(400, 'Invalid coordinates', [
@@ -312,7 +320,7 @@ class APIController extends AbstractController
                 ]);
             }
 
-            $result = $this->chart->calculateNow($latitude, $longitude);
+            $result = $this->chart->calculateNow($latitude, $longitude, $time_zone);
             $this->logger->debug('Chart calculated successfully');
 
             $endTime = microtime(true);
