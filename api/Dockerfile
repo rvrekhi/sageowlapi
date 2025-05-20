@@ -24,7 +24,9 @@ RUN apt-get update -y && \
     gnupg \
     g++ \
     make \
-    nginx
+    nginx \
+    python3 \
+    python3-pip
 
 # Add PHP repository
 RUN add-apt-repository ppa:ondrej/php -y
@@ -51,6 +53,9 @@ RUN apt-get install -y \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install timezonefinder Python library
+RUN pip3 install timezonefinder
 
 # Clean up after installation
 RUN apt-get clean && \
