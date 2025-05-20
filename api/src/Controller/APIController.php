@@ -114,8 +114,8 @@ class APIController extends AbstractController
      *     name="time_zone",
      *     in="query",
      *     description="Timezone for the calculation",
-     *     required=true,
-     *     @OA\Schema(type="string", example="+03:30")
+     *     required=false,
+     *     @OA\Schema(type="string", example="Asia/Kolkata")
      * )
      * @OA\Parameter(
      *     name="dst_hour",
@@ -177,7 +177,7 @@ class APIController extends AbstractController
         $startTime = microtime(true);
 
         try {
-            $requiredParams = ['latitude', 'longitude', 'year', 'month', 'day', 'hour', 'min', 'sec', 'time_zone'];
+            $requiredParams = ['latitude', 'longitude', 'year', 'month', 'day', 'hour', 'min', 'sec'];
             $missingParams = [];
             
             foreach ($requiredParams as $param) {
