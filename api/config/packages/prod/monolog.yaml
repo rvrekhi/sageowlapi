@@ -1,0 +1,7 @@
+monolog:
+  handlers:
+    main:
+      type: stream
+      path: "php://stdout"      # Prevent writing to stderr
+      level: warning            # Only log warning and above
+      channels: ["!event"]
